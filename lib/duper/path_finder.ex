@@ -11,7 +11,7 @@ defmodule Duper.PathFinder do
       GenServer.call(@me, :next_path)
    end
 
-   def init link(path) do
+   def init(path) do
       DirWalker.start_link(path)
    end
 
@@ -23,14 +23,15 @@ defmodule Duper.PathFinder do
          
       {:reply, path, dir_walker}
    end
-end
+  
+   def start(_type, _args) do
+      children = [
+         Duper.Results,
+        {Duper.Results, "."}
+      ]
+   
+       opts = [strategy: :one_for_one, name: Duper.Supervisor]
+       Supervisor.start_link(children, opts)
+   end
 
-def start(_type, args) do
-   children = [
-      Duper.Results,
-     {Duper.Results, "."}
-   ]
-
-   opts = [strategy: :one_for_one, name: Duper.Supervisor]
-   Supervisor.start_link(children, opts)
 end

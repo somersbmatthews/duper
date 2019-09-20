@@ -18,7 +18,7 @@ defmodule Duper.WorkerSupervisor do
    end
 
    def init(:no_args) do
-      DynamicSupervisor.init(stategy: one_for_one)
+      DynamicSupervisor.init(stategy: :one_for_one)
    end
 
    def add_worker() do
