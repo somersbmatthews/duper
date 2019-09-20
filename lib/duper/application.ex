@@ -12,7 +12,7 @@ defmodule Duper.Application do
       Duper.Results,
       {Duper.PathFinder,    "/Users/pyop/Pictures"},
       Duper.WorkerSupervisor,
-      {Duper.Gatherer,   1},
+      {Duper.Gatherer,   2},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
